@@ -22,7 +22,7 @@ import java.util.Map;
  *   ・HTTP/GETを使用した画像ファイルをBitmapオブジェクトで取得
  *       public void getImageAsync
  *
- * Created by KGPI01 on 2015/11/22.
+ * Created by Test on 2015/11/22.
  */
 public class BasicVolleyClient {
 
