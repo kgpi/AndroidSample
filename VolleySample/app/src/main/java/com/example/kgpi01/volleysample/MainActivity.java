@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 //Log.d("Volley", str + result.getVolleyError().getMessage() + result.getVolleyError().networkResponse.toString());
             }
         });
+        Log.d("Volley", "Exit");
     }
 
     public void onClickGetBitmapAsync(View v) {
@@ -43,14 +44,32 @@ public class MainActivity extends AppCompatActivity {
         client.getImageAsync("http://k.yimg.jp/images/top/sp2/cmn/logo-ns-131205.png", null, new BasicVolleyClient.BitmapResultCallback() {
             @Override
             public void onResult(BitmapResult result) {
-                if(result.isOk()) {
-                    ((ImageView)findViewById(R.id.imageView)).setImageBitmap(result.getResponse());
-                } else
-                {
+                if (result.isOk()) {
+                    ((ImageView) findViewById(R.id.imageView)).setImageBitmap(result.getResponse());
+                } else {
                     Log.d("Volley", String.valueOf(result.getStatusCode()));
-                    ((ImageView)findViewById(R.id.imageView)).setImageBitmap(null);
+                    ((ImageView) findViewById(R.id.imageView)).setImageBitmap(null);
                 }
             }
         });
+    }
+
+    public void onClickGetStringButton(View v) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    BasicVolleyClient client = new BasicVolleyClient();
+                    String result = client.getString("http://www.yahoo.co.jp/jkjk.htm", null);
+                    Log.d("Volley", "同期処理：" + result);
+                    Log.d("Volley", "Exit");
+                } catch(Exception e) {
+                    //Log.d("Volley", e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
     }
 }

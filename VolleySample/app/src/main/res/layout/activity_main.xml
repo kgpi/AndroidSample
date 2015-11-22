@@ -31,6 +31,13 @@
             android:id="@+id/getBitmapAsync"
             android:onClick="onClickGetBitmapAsync" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetString Test"
+            android:id="@+id/getStringButton"
+            android:onClick="onClickGetStringButton" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

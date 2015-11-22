@@ -5,13 +5,15 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.RequestFuture;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * 標準的なVolleyクライアント
@@ -21,6 +23,9 @@ import java.util.Map;
  *       public void getStringAsync
  *   ・HTTP/GETを使用した画像ファイルをBitmapオブジェクトで取得
  *       public void getImageAsync
+ *   ・HTTP/GETを使用した同期処理
+ *       public String getString
+ *       ※失敗時は例外がスローされる
  *
  */
 public class BasicVolleyClient {
@@ -69,6 +74,17 @@ public class BasicVolleyClient {
         });
         Log.d("Volley", "RequestUri:" + req.getUrl());
         VolleyFactory.getRequestQueue().add(req);
+    }
+
+    public String getString(String baseUri, Map<String, String> params) throws ExecutionException, InterruptedException, TimeoutException {
+        if(params == null)
+            params = new HashMap<>();
+
+        RequestFuture<String> future = RequestFuture.newFuture();
+        Utf8StringRequest req = new Utf8StringRequest(Request.Method.GET, buildUri(baseUri, params), future, future);
+        VolleyFactory.getRequestQueue().add(req);
+
+        return future.get();
     }
 
     private String buildUri(String baseUri, Map<String, String> getParams) {
