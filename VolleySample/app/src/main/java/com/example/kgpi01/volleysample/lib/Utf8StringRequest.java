@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * レスポンス文字列をUTF-8でエンコード指定したStringRequestの派生クラス
  *
- * Created by KGPI01 on 2015/11/22.
+ *
  */
 public class Utf8StringRequest extends StringRequest {
 

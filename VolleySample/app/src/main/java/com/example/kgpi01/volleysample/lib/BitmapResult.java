@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import com.android.volley.VolleyError;
 
 /**
- * Created by KGPI01 on 2015/11/22.
+ *
  */
 public class BitmapResult extends AbstractResult {
     /**

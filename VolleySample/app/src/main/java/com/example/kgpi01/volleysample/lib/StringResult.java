@@ -4,7 +4,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 /**
- * Created by KGPI01 on 2015/11/22.
+ *
  */
 public class StringResult extends AbstractResult {
 
