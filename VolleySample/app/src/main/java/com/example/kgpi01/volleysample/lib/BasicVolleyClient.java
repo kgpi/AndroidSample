@@ -15,6 +15,12 @@ import java.util.Map;
 
 /**
  * 標準的なVolleyクライアント
+ * 
+ * 機能
+ *   ・HTTP/GETを使用したレスポンス文字列の取得
+ *       public void getStringAsync
+ *   ・HTTP/GETを使用した画像ファイルをBitmapオブジェクトで取得
+ *       public void getImageAsync
  *
  * Created by KGPI01 on 2015/11/22.
  */
