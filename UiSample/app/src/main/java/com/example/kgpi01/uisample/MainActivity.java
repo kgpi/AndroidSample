@@ -1,5 +1,6 @@
 package com.example.kgpi01.uisample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -48,5 +49,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickListviewButton(View v) {
+        startActivity(new Intent(this, ListViewActivity.class));
     }
 }
