@@ -11,6 +11,7 @@ import com.example.kgpi01.volleysample.lib.BitmapResult;
 import com.example.kgpi01.volleysample.lib.StringResult;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> mp = new HashMap<>();
         mp.put("name", "S ato");
         mp.put("age", "21");
-        client.getStringAsync("http://k.yimg.jp/images/top/sp2/cmn/logo-ns-131205.png", null, new BasicVolleyClient.StringResultCallback() {
+        client.getStringAsync("https://40.74.142.185/", null, new BasicVolleyClient.StringResultCallback() {
             @Override
             public void onResult(StringResult result) {
                 Log.d("Volley", String.valueOf(result.getStatusCode()));
@@ -61,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     BasicVolleyClient client = new BasicVolleyClient();
-                    String result = client.getString("http://www.yahoo.co.jp/jkjk.htm", null);
+                    String result = client.getString("http://www.yahoo.co.jp/fafa.htm", null);
                     Log.d("Volley", "同期処理：" + result);
                     Log.d("Volley", "Exit");
+                } catch(ExecutionException ex) {
+                    ex.printStackTrace();
                 } catch(Exception e) {
                     //Log.d("Volley", e.getMessage());
                     e.printStackTrace();

@@ -32,6 +32,12 @@ public class BasicVolleyClient {
 
     public BasicVolleyClient(){    }
 
+    /**
+     * 文字列をGETメソッドで非同期取得する
+     * @param baseUri URL
+     * @param params クエリパラメータ
+     * @param resultCallback 結果呼び出しコールバック
+     */
     public void getStringAsync(String baseUri, Map<String, String> params, final StringResultCallback resultCallback) {
         if(params == null)
             params = new HashMap<>();
@@ -54,6 +60,12 @@ public class BasicVolleyClient {
         VolleyFactory.getRequestQueue().add(req);
     }
 
+    /**
+     * 画像ファイルを非同期取得する
+     * @param baseUri URL
+     * @param params パラメータ
+     * @param resultCallback 結果コールバック
+     */
     public void getImageAsync(String baseUri, Map<String, String> params, final BitmapResultCallback resultCallback) {
         if(params == null)
             params = new HashMap<>();
@@ -76,6 +88,15 @@ public class BasicVolleyClient {
         VolleyFactory.getRequestQueue().add(req);
     }
 
+    /**
+     * GETメソッドを使用した非同期取得
+     * @param baseUri URL
+     * @param params クエリ
+     * @return 結果取得コールバック
+     * @throws ExecutionException
+     * @throws InterruptedException
+     * @throws TimeoutException
+     */
     public String getString(String baseUri, Map<String, String> params) throws ExecutionException, InterruptedException, TimeoutException {
         if(params == null)
             params = new HashMap<>();
@@ -104,4 +125,5 @@ public class BasicVolleyClient {
     public interface StringResultCallback {
         void onResult(StringResult result);
     }
+
 }
